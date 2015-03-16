@@ -1,4 +1,7 @@
 class DashboardController < ApplicationController
 
   def index
-    @name = ENV['omniauth.auth']['info']['name']
+    @name = env['omniauth.auth']['info']['name']
+  end
+
+end
