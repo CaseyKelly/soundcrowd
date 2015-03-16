@@ -14,6 +14,7 @@ gem "koala", "~> 1.11.0rc"
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'dotenv-rails'
 
 group :development, :test do
   gem 'byebug'
