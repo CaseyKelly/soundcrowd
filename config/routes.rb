@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :dashboard
 
   get '/auth/:provider/callback', to: 'sessions#create'
+  get '/show', to: 'dashboard#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

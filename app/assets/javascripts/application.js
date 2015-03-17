@@ -15,7 +15,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require vegas
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
 
 function backdrop() {
 
@@ -27,10 +30,11 @@ $('body').vegas({
   animation: 'random',
   animationDuration: 20000,
   slides: [
-    { src: 'http://www.bighdwallpapers.com/wallpapers/music-beats-abstract-1920x1200.jpg' },
-    { src: 'http://viscoinstrumentalmusicpgcps.weebly.com/uploads/2/4/7/4/24742341/6966130_orig.jpg' },
-    { src: 'http://www.wallpapersgalaxy.com/wp-content/uploads/2013/04/99.jpg' },
-    { src: 'http://www.listofimages.com/wp-content/uploads/2013/07/microphone-music-yellow-vector.jpg' }
+    { src: 'http://static1.squarespace.com/static/54433764e4b09e0c2c24e17b/544347bae4b02d01b1738a29/5444565ce4b0ef2fa0b33a2b/1414033479399/1-TYH_8865.jpg?format=1000w' },
+    { src: 'http://static1.squarespace.com/static/54433764e4b09e0c2c24e17b/544347bae4b02d01b1738a29/544457d3e4b01431efe8df33/1413765077900/TYH_7186.jpg?format=1000w' },
+    { src: 'http://static1.squarespace.com/static/54433764e4b09e0c2c24e17b/544347bae4b02d01b1738a29/544727b0e4b014352f0c6cf7/1414033755951/TYH_7600+-+Version+2.jpg?format=1000w' },
+    { src: 'http://static1.squarespace.com/static/54433764e4b09e0c2c24e17b/544347bae4b02d01b1738a29/54486481e4b029c53cbce28a/1414034083697/TYH_4254.jpg?format=1000w' },
+    { src: 'http://static1.squarespace.com/static/54433764e4b09e0c2c24e17b/544347bae4b02d01b1738a29/5444569fe4b01431efe8dc2a/1414042991181/5-%281+of+1%29TYH_1450.jpg?format=1000w'}
   ]
 });
 
