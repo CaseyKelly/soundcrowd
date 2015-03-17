@@ -15,7 +15,10 @@
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require vegas
+//= require underscore
+//= require gmaps/google
 //= require_tree .
+
 
 function backdrop() {
 
