@@ -12,13 +12,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
   <% unless controller_name =="welcome" %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
       <div class="navbar-header">
         <div class="form-group has-feedback">
-        <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-equalizer"  style="margin-right: 10px"></span>SoundCrowd</a>
+        <a class="navbar-brand" href="/dashboard/index"><span class="glyphicon glyphicon-equalizer"  style="margin-right: 10px"></span>SoundCrowd</a>
       </div>
     </div>
 
@@ -26,7 +25,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group has-feedback">
-            <input type="text" class="form-control" placeholder="Search">
+            <input type="text" class="form-control" placeholder="Location">
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
         </form>
