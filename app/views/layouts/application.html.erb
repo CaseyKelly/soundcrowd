@@ -29,11 +29,14 @@
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
         </form>
+        <ul class="nav navbar-nav">
+          <li><a href="#" class="navbar-brand">Venues</a></li>
+        </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <% if @user %>
-          <li><%= image_tag @user.image %></li>
-          <li><%= link_to @user.name %></li>
+          <li ><%= image_tag @user.image, class: 'avatar' %></li>
+          <li ><%= link_to @user.name %></li>
           <% end %>
         </ul>
       </div>
