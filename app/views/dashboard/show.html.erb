@@ -6,7 +6,7 @@
       <ul class="list-group">
         <% @shows.each do |show| %>
           <li class="list-group-item">
-              <h3><%= show["artists"].first["name"] %></h3>
+            <center><h3><%= show["artists"].first["name"] %></h3>
               <h3>
                 <div class="pull-right">
                   <% if show["ticket_status"] == "available" %>
@@ -16,7 +16,7 @@
               </h3>
               <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
               <h5>at <%= show["venue"]["name"] %></h5>
-              <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5>
+              <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5></center>
             <% end %>
           </li>
       </ul>
