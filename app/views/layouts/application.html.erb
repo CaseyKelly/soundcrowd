@@ -3,7 +3,11 @@
 <head>
   <title>Soundcrowd</title>
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <% if controller_name == "welcome" %>
+  <%= stylesheet_link_tag    'vegas', media: 'all', 'data-turbolinks-track' => true %>
+  <% else %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <% end %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
