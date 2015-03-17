@@ -6,6 +6,8 @@
 
 @import "bootswatch/united/bootswatch";
 
+body { padding-top: 60px; }
+
 .list-group {
    max-height: 750px;
    overflow-y:scroll;
