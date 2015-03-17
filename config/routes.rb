@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   get '/auth/:provider/callback', to: 'dashboard#index'
+  get '/show', to: 'dashboard#show'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

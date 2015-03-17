@@ -1,0 +1,20 @@
+<div class="col-md-3">
+  <ul class="list-group">
+    <% @places.local_shows.each do |show| %>
+      <li class="list-group-item">
+          <h3><%= show["artists"].first["name"] %></h3>
+          <h5><%= show["datetime"].to_date.strftime("%B %-d, %Y") %></h5>
+          <h5>at <%= show["venue"]["name"] %></h5>
+          <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5>
+          <h3>
+            <i class="fa fa-ticket"></i>
+            <% if show["ticket_status"] == "unavailable" %>
+              <%= "SOLD OUT" %>
+            <% else %>
+              <a href="<%= show["ticket_url"] %>">Click here for tickets</a>
+            <% end %>
+          </h3>
+        <% end %>
+      </li>
+  </ul>
+</div>

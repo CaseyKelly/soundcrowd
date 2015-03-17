@@ -11,19 +11,19 @@ class DataFetcher
     @date_times = []
   end
 
-  def show_entity
+  def local_shows
     response = @band_connection.get do |req|
       req.url "/events/search.json?location=Denver,CO"
       # req.headers['X-App-Token'] = 'YOUR_KEY'
       # req.headers['Content-Type'] = 'application/json'
   end
 
-  @parsed =  JSON.parse(response.body)
+  parsed =  JSON.parse(response.body)
 
   end
 
   def get_venues
-    @parsed.each do |venue|
+    parsed.each do |venue|
       @venues << venue["venue"]["name"]
     end
     @venues
