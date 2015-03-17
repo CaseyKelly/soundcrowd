@@ -11,7 +11,7 @@ class DashboardController < ApplicationController
     end
   end
 
-  def showg
+  def show
     @user = User.find_by(oauth_id: session[:user_id])
     @places = DataFetcher.new
     @shows = @places.local_shows
