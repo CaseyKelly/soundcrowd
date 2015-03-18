@@ -11,4 +11,9 @@ class SessionsController < ApplicationController
     redirect_to '/dashboard#index'
   end
 
+  def destroy
+    if not @user
+      redirect_to root_path
+    end
+  end
 end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get '/show', to: 'dashboard#show'
   get '/test', to: 'dashboard#test'
   get '/venue', to: 'dashboard#event_venue'
+  get 'signout'=> 'sessions#destroy'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
