@@ -3,11 +3,17 @@
 
   <div class="row">
     <div class="col-md-3">
+      <center>
+        Sort by: <%= link_to "Artist", '/dashboard?sort=Artist' %>
+        | <%= link_to "Venue", '/dashboard?sort=Venue' %>
+        | <%= link_to "Date", '/dashboard?sort=Date' %>
+        | <%= link_to "Tickets Available", '/dashboard?sort=TicketsAvailable' %>
+      </center>
       <ul class="list-group">
         <% @shows.each do |show| %>
         <div id=<%=show.id %> </div>
           <li class="list-group-item">
-            <center><h3><%= show["artists"].first["name"] %></h3>
+              <center><h3><%= show["artists"].first["name"] %></h3>
               <h3>
                 <div class="pull-right">
                   <% if show["ticket_status"] == "available" %>
