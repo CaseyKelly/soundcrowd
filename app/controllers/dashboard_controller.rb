@@ -4,7 +4,7 @@ class DashboardController < ApplicationController
     @user = User.find_by(oauth_id: session[:user_id])
     @places = DataFetcher.new
     if params[:search] == nil
-      @location = "Denver,CO"
+      @location = "Denver, CO"
     else
       @location = params[:search]
     end
@@ -27,5 +27,16 @@ class DashboardController < ApplicationController
     end
   end
 
+  def event_venue
+    @venues = DataFetcher.new
+    @events = @venues.venue_shows(params[:venueid])
+    @yelp_info = Yelp.client.search("#{params[:city]}, #{params[:region]}", { term: params[:venue]})
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event["venue"]["latitude"]
+      marker.lng event["venue"]["longitude"]
+      marker.infowindow event["venue"]["name"]
+    end
+
+  end
 
 end

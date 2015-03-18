@@ -24,7 +24,8 @@
                 </div>
               </h3>
               <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
-              <h5>at <%= show["venue"]["name"] %></h5>
+              <h5> <%= link_to show["venue"]["id"], "#{show["venue"]["url"]}" %> </h5>
+              <h5>at <%= link_to show["venue"]["name"], "/venue?venue=#{show["venue"]["name"]}&city=#{show["venue"]["city"]}&region=#{show["venue"]["region"]}&venueid=#{show["venue"]["id"]}" %></h5>
               <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5></center>
             <% end %>
           </li>
