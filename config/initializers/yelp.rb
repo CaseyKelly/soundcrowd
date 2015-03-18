@@ -1,6 +1,6 @@
 Yelp.client.configure do |config|
-  config.consumer_key     = Rails.application.secrets.consumer_key
-  config.consumer_secret  = Rails.application.secrets.consumer_secret
-  config.token            = Rails.application.secrets.token
-  config.token_secret     = Rails.application.secrets.token_secret
+  config.consumer_key     = env["YELP_KEY"]
+  config.consumer_secret  = env["YELP_SECRET"]
+  config.token            = env["YELP_TOKEN"]
+  config.token_secret     = env["YELP_TOKEN_SECRET"]
 end
