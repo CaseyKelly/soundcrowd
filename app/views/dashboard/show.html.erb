@@ -11,6 +11,7 @@
       </center>
       <ul class="list-group">
         <% @shows.each do |show| %>
+        <div id=<%=show.id %> </div>
           <li class="list-group-item">
               <center><h3><%= show["artists"].first["name"] %></h3>
               <h3>
