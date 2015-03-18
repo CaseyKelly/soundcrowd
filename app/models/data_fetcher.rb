@@ -1,5 +1,7 @@
 class DataFetcher
   attr_reader :venues, :artists, :date_times, :parsed
+  
+
   def initialize
     @band_connection = Faraday.new(:url => 'https://api.bandsintown.com') do |faraday|
       faraday.request  :url_encoded             # form-encode POST params
@@ -11,9 +13,9 @@ class DataFetcher
     @date_times = []
   end
 
-  def local_shows
+  def local_shows(location)
     response = @band_connection.get do |req|
-      req.url "/events/search.json?location=Denver,CO"
+      req.url "/events/search.json?location=#{location}"
       # req.headers['X-App-Token'] = 'YOUR_KEY'
       # req.headers['Content-Type'] = 'application/json'
   end
@@ -42,4 +44,5 @@ class DataFetcher
       shows.sort_by!{ |a| [a['ticket_status'], a['datetime'], a["artists"].first["name"]] }
     end
   end
+
 end
