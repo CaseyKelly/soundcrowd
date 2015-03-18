@@ -28,4 +28,18 @@ class DataFetcher
     end
     @venues
   end
+
+  def sorter(ord, shows)
+    if ord == 'Artist'
+      shows.sort_by!{ |a| [a["artists"].first["name"], a['datetime']] }
+    elsif ord == 'Venue'
+      shows.sort_by!{ |a| [a['venue']['name'], a['datetime']] }
+    elsif ord == 'Date'
+      shows.sort_by!{ |a| [a['datetime'], a["artists"].first["name"]] }
+    elsif ord == 'TicketAvailable'
+      shows.sort_by!{ |a| [a['ticket_status'], a['datetime']] }
+    else
+      shows.sort_by!{ |a| [a['ticket_status'], a['datetime'], a["artists"].first["name"]] }
+    end
+  end
 end
