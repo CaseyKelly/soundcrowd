@@ -14,9 +14,8 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require vegas
 //= require underscore
-//= require gmaps/google
+//= require vegas
 //= require_tree .
 
 
