@@ -26,7 +26,7 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
         <form class="navbar-form navbar-left" role="search">
           <div class="form-group has-feedback">
-            <input type="text" name="search" class="form-control" placeholder="Location: Denver, CO">
+            <input type="text" name="search" class="form-control" placeholder= "<%= @location %>">
             <span class="glyphicon glyphicon-search form-control-feedback"></span>
           </div>
         </form>
@@ -36,10 +36,16 @@
 
         <ul class="nav navbar-nav navbar-right">
           <% if @user %>
-          <li ><%= image_tag @user.image, class: 'avatar' %></li>
-          <li ><%= link_to @user.name %></li>
-          <% end %>
+          <li><%= image_tag @user.image, class: 'avatar' %></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><%= @user.name %></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Log Out", signout_path %></li>
+            </ul>
+          </li>
         </ul>
+          <% end %>
+
       </div>
     </div>
   </nav>
