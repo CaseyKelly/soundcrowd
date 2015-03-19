@@ -11,14 +11,17 @@ class DataFetcher
     @date_times = []
   end
 
-  def local_shows(location)
-    response = @band_connection.get do |req|
-      req.url "/events/search.json?location=#{location}"
-      # req.headers['X-App-Token'] = 'YOUR_KEY'
-      # req.headers['Content-Type'] = 'application/json'
+  def fetch_local_shows(location)
+    Rails.cache.fetch(location, expires_in: 12.hours) do
+      response = @band_connection.get do |req|
+        req.url "/events/search.json?location=#{location}"
+      end
     end
-    @notparsed = response.body
-    parsed = JSON.parse(response.body)
+  end
+
+  def local_shows(location)
+    @notparsed = fetch_local_shows(location).body
+    parsed = JSON.parse(fetch_local_shows(location).body)
   end
 
   def venue_shows(venueid)
