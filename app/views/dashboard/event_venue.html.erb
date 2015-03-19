@@ -10,21 +10,29 @@
       <ul class="list-group">
         <% @events.each do |event| %>
           <li class="list-group-item">
-              <center><h3><%= event["artists"].first["name"] %></h3>
-              <h3>
-                <div class="pull-right">
-                  <div id= "<%= event["url"] %>">  </div>
-                  <div class="fb-share-button" data-href="<%= event["url"] %>" data-layout="button"></div>
-                  <% if event["ticket_status"] == "available" %>
-                    <h1><a href="<%= event["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
-                    <% end %>
-                </div>
-              </h3>
-              <h5><%= event["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
-              <h5>at <%= link_to event["venue"]["name"], "/venue?venue=#{event["venue"]["name"]}&city=#{event["venue"]["city"]}&region=#{event["venue"]["region"]}&venueid=#{event["venue"]["id"]}" %></h5>
-              <h5><%= event["venue"]["city"] %>, <%= event["venue"]["region"] %></h5></center>
-            <% end %>
+            <div class="row">
+              <div class="col-md-8">
+                <center>
+                  <h3><%= event["artists"].first["name"] %></h3>
+                  <h5><%= event["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
+                  <h5>at <%= link_to event["venue"]["name"], "/venue?venue=#{event["venue"]["name"]}&city=#{event["venue"]["city"]}&region=#{event["venue"]["region"]}&venueid=#{event["venue"]["id"]}" %></h5>
+                  <h5><%= event["venue"]["city"] %>, <%= event["venue"]["region"] %></h5>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <h3>
+                  <div class="pull-right">
+                    <div id= "<%= event["url"] %>">  </div>
+                    <div class="fb-share-button" data-href="<%= event["url"] %>" data-layout="button"></div>
+                    <% if event["ticket_status"] == "available" %>
+                      <h1><a href="<%= event["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
+                      <% end %>
+                  </div>
+                </h3>
+              </div>
+            </div>
           </li>
+        <% end %>
       </ul>
     </div>
 
