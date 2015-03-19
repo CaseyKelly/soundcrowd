@@ -5,8 +5,6 @@
 
   <div class="row">
     <div class="col-md-3">
-
-
       <center>
         Sort by: <%= link_to "Artist", '/dashboard?sort=Artist' %>
         | <%= link_to "Venue", '/dashboard?sort=Venue' %>
@@ -20,7 +18,6 @@
               <div class="col-md-8">
                 <center>
                   <h3><%= link_to show["artists"].first["name"], '#', class: 'map', id: show["id"] %></h3>
-
                   <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
                   <h5>at <%= link_to show["venue"]["name"], "/venue?venue=#{show["venue"]["name"]}&city=#{show["venue"]["city"]}&region=#{show["venue"]["region"]}&venueid=#{show["venue"]["id"]}" %></h5>
                   <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5>
@@ -46,57 +43,57 @@
     <div class="col-md-9">
       <div id="map" style='width: 1000px; height: 800px;'></div>
       <script type="text/javascript">
-      var map;
-      function initialize(centerlat, centerlong) {
-         var mapOptions = {
-           center: { lat: centerlat, lng: centerlong},
-           zoom: 11
-         };
-         map = new google.maps.Map(document.getElementById('map'),
-             mapOptions);
-      }
+        var map;
+        function initialize(centerlat, centerlong) {
+           var mapOptions = {
+             center: { lat: centerlat, lng: centerlong},
+             zoom: 11
+           };
+           map = new google.maps.Map(document.getElementById('map'),
+               mapOptions);
+        }
 
-      var infowindow = new google.maps.InfoWindow({
-        size: new google.maps.Size(150,50)
-      });
-      var gmarkers = []
-      function myclick(id) {
-        google.maps.event.trigger(gmarkers[id], "click");
-      }
-      function createMarker(latlng, name, html, city, region, id) {
-        var contentString = html;
-        var marker = new google.maps.Marker({
-          position: latlng,
-          map: map,
-          zIndex: Math.round(latlng.lat()*-100000)<<5
-       });
-       marker.metadata = {id: id}
-
-       google.maps.event.addListener(marker, 'click', function() {
-         infowindow.setContent("<b>" + name + "</b><p>" + 'at ' + contentString + '<br>' + city + ', ' + region);
-         infowindow.open(map,marker);
-         map.panTo(this.getPosition());
-         map.setZoom(18);
-       });
-       // save the info we need to use later for the side_bar
-       gmarkers[marker.metadata.id] = marker;
-       // add a line to the side_bar html
-      //  side_bar_html += '<a href="javascript:myclick(' + (gmarkers.length-1) + ')">' + name + '<\/a><br>';
-      }
-
-      $.ajax("/dashboard.json").success(function(res){
-        google.maps.event.addDomListener(window, 'load', initialize(res[0].venue.latitude, res[0].venue.longitude));
-        res.forEach(function(item){
-          var point = new google.maps.LatLng(item.venue.latitude,item.venue.longitude);
-          var marker = createMarker(point, item.artists[0].name, item.venue.name, item.venue.city, item.venue.region, item.id)
-        })
-      })
-      $(function() {
-        $(".map" ).on('click', function(e){
-          google.maps.event.trigger(gmarkers[e.target.id], "click");
-          e.preventDefault();
+        var infowindow = new google.maps.InfoWindow({
+          size: new google.maps.Size(150,50)
         });
-      });
+        var gmarkers = []
+        function myclick(id) {
+          google.maps.event.trigger(gmarkers[id], "click");
+        }
+        function createMarker(latlng, name, html, city, region, id) {
+          var contentString = html;
+          var marker = new google.maps.Marker({
+            position: latlng,
+            map: map,
+            zIndex: Math.round(latlng.lat()*-100000)<<5
+         });
+         marker.metadata = {id: id}
+
+         google.maps.event.addListener(marker, 'click', function() {
+           infowindow.setContent("<b>" + name + "</b><p>" + 'at ' + contentString + '<br>' + city + ', ' + region);
+           infowindow.open(map,marker);
+           map.panTo(this.getPosition());
+           map.setZoom(18);
+         });
+         // save the info we need to use later for the side_bar
+         gmarkers[marker.metadata.id] = marker;
+         // add a line to the side_bar html
+        //  side_bar_html += '<a href="javascript:myclick(' + (gmarkers.length-1) + ')">' + name + '<\/a><br>';
+        }
+
+        $.ajax(window.location.pathname + ".json" + window.location.search).success(function(res){
+          google.maps.event.addDomListener(window, 'load', initialize(res[0].venue.latitude, res[0].venue.longitude));
+          res.forEach(function(item){
+            var point = new google.maps.LatLng(item.venue.latitude,item.venue.longitude);
+            var marker = createMarker(point, item.artists[0].name, item.venue.name, item.venue.city, item.venue.region, item.id)
+          })
+        })
+        $(function() {
+          $(".map" ).on('click', function(e){
+            google.maps.event.trigger(gmarkers[e.target.id], "click");
+            e.preventDefault();
+          });
+        });
       </script>
     </div>
   </div>
