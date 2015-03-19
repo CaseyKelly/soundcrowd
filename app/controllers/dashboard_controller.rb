@@ -32,5 +32,6 @@ class DashboardController < ApplicationController
     @user = User.find_by(oauth_id: session[:user_id])
     @artist = DataFetcher.new
     @performances = @artist.artist_allshows(params[:artistid])
+    @performer = @artist.artist_info(params[:artistid])
   end
 end
