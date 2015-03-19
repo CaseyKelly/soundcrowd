@@ -41,7 +41,7 @@ class DataFetcher
     @venues
   end
 
-  def artist_allshows
+  def artist_allshows(artistid)
     response = @band_connection.get do |req|
       req.url "/artists/Nas/events?format=json&app_id=SOUNDCROWD"
       # req.headers['X-App-Token'] = 'YOUR_KEY'

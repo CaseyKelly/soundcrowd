@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :dashboard
 
   get '/auth/:provider/callback', to: 'sessions#create'
-  get '/show', to: 'dashboard#show'
+  get '/artist', to: 'dashboard#event_artist'
   get '/test', to: 'dashboard#test'
   get '/venue', to: 'dashboard#event_venue'
   get 'signout'=> 'sessions#destroy'
