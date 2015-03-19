@@ -38,6 +38,16 @@ class DataFetcher
     @venues
   end
 
+  def artist_allshows(artistid)
+    response = @band_connection.get do |req|
+      req.url "/artists/Nas/events?format=json&app_id=SOUNDCROWD"
+      # req.headers['X-App-Token'] = 'YOUR_KEY'
+      # req.headers['Content-Type'] = 'application/json'
+    end
+    @notparsed = response.body
+    parsed =  JSON.parse(response.body)
+  end
+
   def sorter(ord, shows)
     if ord == 'Artist'
       shows.sort_by!{ |a| [a["artists"].first["name"], a['datetime']] }

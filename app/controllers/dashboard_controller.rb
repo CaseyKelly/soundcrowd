@@ -22,4 +22,9 @@ class DashboardController < ApplicationController
     @yelp_info = Yelp.client.search("#{params[:city]}, #{params[:region]}", { term: params[:venue]})
   end
 
+  def event_artist
+    @user = User.find_by(oauth_id: session[:user_id])
+    @artists = DataFetcher.new
+    @performances = @artists.artist_allshows(params[:artistid])
+  end
 end
