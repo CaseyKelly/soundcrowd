@@ -20,6 +20,12 @@ class DashboardController < ApplicationController
     @venues = DataFetcher.new
     @events = @venues.venue_shows(params[:venueid])
     @yelp_info = Yelp.client.search("#{params[:city]}, #{params[:region]}", { term: params[:venue], cll: "#{params[:latitude]},#{params[:longitude]}" })
+    @hash = Gmaps4rails.build_markers(@events) do |event, marker|
+      marker.lat event["venue"]["latitude"]
+      marker.lng event["venue"]["longitude"]
+      marker.infowindow event["venue"]["name"]
+    end
+
   end
 
 end
