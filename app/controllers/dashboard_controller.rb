@@ -8,6 +8,12 @@ class DashboardController < ApplicationController
     else
       @location = params[:search]
     end
+
+    if @places.local_shows(@location).class != Array && @places.local_shows(@location)["errors"].present?
+      raise OverCapacity
+    else
+    end
+
     @shows = @places.sorter(params[:sort], @places.local_shows(@location))
     respond_to do |format|
       format.html {render :index}
