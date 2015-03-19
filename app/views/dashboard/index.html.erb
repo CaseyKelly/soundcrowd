@@ -16,8 +16,6 @@
       <ul class="list-group">
         <% @shows.each do |show| %>
           <li class="list-group-item">
-            
-
             <div class="row">
               <div class="col-md-8">
                 <center>
@@ -40,8 +38,6 @@
                 </h3>
               </div>
             </div>
-
-
           </li>
         <% end %>
       </ul>
@@ -54,7 +50,7 @@
       function initialize(centerlat, centerlong) {
          var mapOptions = {
            center: { lat: centerlat, lng: centerlong},
-           zoom: 10
+           zoom: 11
          };
          map = new google.maps.Map(document.getElementById('map'),
              mapOptions);
