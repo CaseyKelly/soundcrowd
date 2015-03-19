@@ -18,6 +18,7 @@ gem 'dotenv-rails'
 gem 'faraday'
 gem 'geocoder'
 gem 'yelp', require: 'yelp'
+gem 'gmaps4rails'
 
 group :development, :test do
   gem 'pry-byebug'
