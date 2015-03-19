@@ -16,19 +16,28 @@
       <ul class="list-group">
         <% @shows.each do |show| %>
           <li class="list-group-item">
-              <center><h3><%= link_to show["artists"].first["name"], '#', class: 'map', id: show["id"] %></h3>
-              <h3>
-                <div class="pull-right">
-                  <div id= "<%= show["url"] %>">  </div>
-                  <div class="fb-share-button" data-href="<%= show["url"] %>" data-layout="button"></div>
-                  <% if show["ticket_status"] == "available" %>
-                    <h1><a href="<%= show["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
+            <div class="row">
+              <div class="col-md-8">
+                <center>
+                  <h3><%= link_to show["artists"].first["name"], '#', class: 'map', id: show["id"] %></h3>
+
+                  <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
+                  <h5>at <%= link_to show["venue"]["name"], "/venue?venue=#{show["venue"]["name"]}&city=#{show["venue"]["city"]}&region=#{show["venue"]["region"]}&venueid=#{show["venue"]["id"]}" %></h5>
+                  <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5>
+                </center>
+              </div>
+              <div class="col-md-4">
+                <h3>
+                  <div class="pull-right">
+                    <div id= "<%= show["url"] %>">  </div>
+                    <div class="fb-share-button" data-href="<%= show["url"] %>" data-layout="button"></div>
+                    <% if show["ticket_status"] == "available" %>
+                      <h1><a href="<%= show["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
                     <% end %>
-                </div>
-              </h3>
-              <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
-              <h5>at <%= link_to show["venue"]["name"], "/venue?venue=#{show["venue"]["name"]}&city=#{show["venue"]["city"]}&region=#{show["venue"]["region"]}&venueid=#{show["venue"]["id"]}" %></h5>
-              <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5></center>
+                  </div>
+                </h3>
+              </div>
+            </div>
             <% end %>
           </li>
       </ul>
