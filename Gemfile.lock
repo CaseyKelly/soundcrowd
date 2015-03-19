@@ -73,6 +73,8 @@ GEM
       multipart-post (>= 1.2, < 3)
     faraday_middleware (0.9.1)
       faraday (>= 0.7.4, < 0.10)
+    gaffe (1.0.2)
+      rails (>= 3.2.0)
     geocoder (1.2.7)
     globalid (0.3.3)
       activesupport (>= 4.1.0)
@@ -212,6 +214,7 @@ DEPENDENCIES
   coffee-rails (~> 4.1.0)
   dotenv-rails
   faraday
+  gaffe
   geocoder
   gmaps4rails
   jbuilder (~> 2.0)

@@ -19,6 +19,7 @@ gem 'faraday'
 gem 'geocoder'
 gem 'yelp', require: 'yelp'
 gem 'gmaps4rails'
+gem 'gaffe'
 
 group :development, :test do
   gem 'pry-byebug'
