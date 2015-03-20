@@ -21,11 +21,16 @@
                     <h5><%= show["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
                     <h5>at <%= link_to show["venue"]["name"], "/venue?venue=#{show["venue"]["name"]}&city=#{show["venue"]["city"]}&region=#{show["venue"]["region"]}&venueid=#{show["venue"]["id"]}" %></h5>
                     <h5><%= show["venue"]["city"] %>, <%= show["venue"]["region"] %></h5>
+                    <h5><%= link_to show["artists"].first["name"], "/artist?artistid=#{show["artists"].first["name"]}" %></h5>
                   </center>
                 </div>
                 <div class="col-md-4">
                   <h3>
                     <div class="pull-right">
+                      <center><%= link_to "/artist?artistid=#{show["artists"].first["name"]}" do %>
+                        <i class= "glyphicon glyphicon-user"></i>
+                        <% end %>
+                        </center>
                       <div id= "<%= show["url"] %>">  </div>
                       <div class="fb-share-button" data-href="<%= show["url"] %>" data-layout="button"></div>
                       <% if show["ticket_status"] == "available" %>

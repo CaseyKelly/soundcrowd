@@ -55,10 +55,61 @@
 </head>
 
 <body>
+
+<script type="text/javascript">
+  function initialize() {
+    var options = {
+      types: ['(cities)']
+
+      };
+
+     var input = document.getElementById('searchTextField');
+     var autocomplete = new google.maps.places.Autocomplete(input, options);
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+
+  <% unless controller_name =="welcome" %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <div class="form-group has-feedback">
+        <a class="navbar-brand" href="/dashboard#index"><span class="glyphicon glyphicon-equalizer"  style="margin-right: 10px"><div class='SC'><%= image_tag 'SoundCrowd2.png', class: 'SC' %></div></span></a>
+      </div>
+    </div>
+
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+        <% if action_name == "index" %>
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group has-feedback">
+            <input id="searchTextField" type="text"  autocomplete= "on" name="search" class="form-control" placeholder= "<%= @location %>">
+            <span class="glyphicon glyphicon-search form-control-feedback"><input type="submit" style="display: none;"></span>
+          </div>
+        </form>
+        <% end %>
+
+        <ul class="nav navbar-nav navbar-right">
+          <% if @user %>
+          <li><%= image_tag @user.image, class: 'avatar' %></li>
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"><%= @user.name %><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to "Log Out", signout_path %></li>
+            </ul>
+          </li>
+        </ul>
+          <% end %>
+
+      </div>
+    </div>
+  </nav>
+  <% end %>
+
+
   <!-- This file lives in public/404.html -->
   <div class="dialog">
     <div>
-      <h1>Sorry dude. The venue you were looking for doesn't exist.</h1>
+      <h1>Sorry dude. The page you were looking for doesn't exist.</h1>
       <img src="http://i.imgur.com/RJ7ONai.png" height=550px>
     </div>
   </div>
