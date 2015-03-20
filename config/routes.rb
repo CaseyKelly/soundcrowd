@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get '/test', to: 'dashboard#test'
   get '/venue', to: 'dashboard#event_venue'
   get 'signout'=> 'sessions#destroy'
+  get 'about' => 'about#index'
+
 
 
   # Example of regular route:
