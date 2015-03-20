@@ -9,41 +9,42 @@
     </center>
     <ul class="list-group">
       <% @performances.each do |performance| %>
-        <li class="list-group-item">
-          <div class="well" style="margin-bottom: 0px">
-            <div class="row">
+      <li class="list-group-item">
+        <div class="well" style="margin-bottom: 0px">
+          <div class="row">
             <div class="col-md-8">
-                <center>
-                  <h3><%= link_to performance["venue"]["name"], "/venue?venue=#{performance["venue"]["name"]}&city=#{performance["venue"]["city"]}&region=#{performance["venue"]["region"]}&venueid=#{performance["venue"]["id"]}" %></h3>
-                  <h5><%= performance["venue"]["city"] %>, <%= performance["venue"]["region"] %></h5>
-                  <h5><%= performance["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
-                </center>
-                    <div id= "<%= performance["url"] %>">  </div>
-                    <div class="fb-share-button" data-href="<%= performance["url"] %>" data-layout="button"></div>
-                </div>
-                <div class="row">
-                <div class="col-md-4 pull-right">
-                  <h3>
-                  <% if performance["ticket_status"] == "available" %>
-                  <h1><a href="<%= performance["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
-                  <% end %>
-                </h3>
-              </div>
+              <center>
+                <h3><%= link_to performance["venue"]["name"], "/venue?venue=#{performance["venue"]["name"]}&city=#{performance["venue"]["city"]}&region=#{performance["venue"]["region"]}&venueid=#{performance["venue"]["id"]}" %></h3>
+                <h5><%= performance["venue"]["city"] %>, <%= performance["venue"]["region"] %></h5>
+                <h5><%= performance["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
+                <div id= "<%= performance["url"] %>">  </div>
+                <div class="fb-share-button" data-href="<%= performance["url"] %>" data-layout="button"></div>
+              </center>
             </div>
+            <div class="col-md-4">
+              <h3>
+                <div class="pull-right">
+                  <center>
+                    <% if performance["ticket_status"] == "available" %>
+                    <h1><a href="<%= performance["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
+                    <% end %>
+                  </center>
+                </div>
+              </h3>
             </div>
           </div>
-
-        </li>
+        </div>
+      </li>
       <% end %>
     </ul>
   </div>
   <div class="col-md-9">
-      <div class="page-header">
-        <h1><%= image_tag "#{@performances[0]["artists"][0]["thumb_url"]}" %> <%= @performances[0]["artists"][0]["name"] %> </h1>
-        <%= link_to "Artist's Official Homepage", "#" %>
-      </div>
-      <div class='container'><iframe id="ytplayer" type="text/html" width="640" height="390"
- src="https://www.youtube.com/embed?listType=search&list=<%= @performances[0]["artists"][0]["name"] %>"
- frameborder="0"/></div>
+    <div class="page-header">
+      <h1><%= image_tag "#{@performances[0]["artists"][0]["thumb_url"]}" %> <%= @performances[0]["artists"][0]["name"] %> </h1>
+      <%= link_to "Artist's Official Homepage", "#" %>
+    </div>
+    <div class='container'><iframe id="ytplayer" type="text/html" width="640" height="390"
+      src="https://www.youtube.com/embed?listType=search&list=<%= @performances[0]["artists"][0]["name"] %>"
+      frameborder="0"/></div>
     </div>
   </div>

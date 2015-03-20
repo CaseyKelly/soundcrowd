@@ -19,22 +19,21 @@
                 <h5><%= event["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
                 <h5>at <%= event["venue"]["name"] %></h5>
                 <h5><%= event["venue"]["city"] %>, <%= event["venue"]["region"] %></h5>
-                <h6> <%= image_tag "#{event["artists"].first["thumb_url"]}" %> </h6>
-                <!-- <h5><% event["venue"]["latitude"] %> <% event["venue"]["longitude"] %></h5> -->
+                <div id= "<%= event["url"] %>">  </div>
+                <div class="fb-share-button" data-href="<%= event["url"] %>" data-layout="button"></div>
               </center>
             </div>
             <div class="col-md-4">
               <h3>
                 <div class="pull-right">
-                  <center><%= link_to "/artist?artistid=#{(event["artists"].first["name"]).gsub(" ","")}" do %>
-                    <i class= "glyphicon glyphicon-user"></i>
+                  <center>
+                    <%= link_to "/artist?artistid=#{(event["artists"].first["name"]).gsub(" ","")}" do %>
+                    <h1><i class= "glyphicon glyphicon-user"></i></h1>
                     <% end %>
-                    </center>
-                  <div id= "<%= event["url"] %>">  </div>
-                  <div class="fb-share-button" data-href="<%= event["url"] %>" data-layout="button"></div>
-                  <% if event["ticket_status"] == "available" %>
-                  <h1><a href="<%= event["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
-                  <% end %>
+                    <% if event["ticket_status"] == "available" %>
+                    <h1><a href="<%= event["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
+                    <% end %>
+                  </center>
                 </div>
               </h3>
             </div>
@@ -62,16 +61,16 @@
         </div>
       </div>
     </div>
-      <div id="map" style='width: 1050px; height: 515px;'></div>
-      <script type="text/javascript">
-      handler = Gmaps.build('Google');
-         handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-           markers = handler.addMarkers(<%=raw @hash.to_json %>);
-           handler.bounds.extendWith(markers);
-           handler.fitMapToBounds();
-           handler.getMap().setZoom(18);
-           infowindow.open(Gmaps.map, marker.serviceObject);
-         });
-      </script>
+    <div id="map" style='width: 1050px; height: 515px;'></div>
+    <script type="text/javascript">
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(18);
+      infowindow.open(Gmaps.map, marker.serviceObject);
+    });
+    </script>
   </div>
 </div>
