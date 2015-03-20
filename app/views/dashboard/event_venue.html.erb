@@ -27,11 +27,11 @@
               <h3>
                 <div class="pull-right">
                   <center>
-                    <%= link_to "/artist?artistid=#{(event["artists"].first["name"]).gsub(" ","")}" do %>
+                    <%= link_to "/artist?artistid=#{(event["artists"].first["name"]).gsub(" ","")}", title:"View Artist" do %>
                     <h1><i class= "glyphicon glyphicon-user"></i></h1>
                     <% end %>
                     <% if event["ticket_status"] == "available" %>
-                    <h1><a href="<%= event["ticket_url"] %>"><i class="fa fa-ticket"></i></a></h1>
+                    <h1><a href="<%= event["ticket_url"] %>" title="Buy Tickets"><i class="fa fa-ticket"></i></a></h1>
                     <% end %>
                   </center>
                 </div>
