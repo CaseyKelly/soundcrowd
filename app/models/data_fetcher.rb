@@ -43,7 +43,7 @@ class DataFetcher
 
   def artist_allshows(artistid)
     response = @band_connection.get do |req|
-      req.url "/artists/Nas/events.json?&api_version=2.0&app_id=SOUNDCROWD"
+      req.url "/artists/#{artistid}/events.json?&api_version=2.0&app_id=SOUNDCROWD"
       # req.headers['X-App-Token'] = 'YOUR_KEY'
       # req.headers['Content-Type'] = 'application/json'
     end
