@@ -14,9 +14,9 @@
             <div class="row">
             <div class="col-md-8">
                 <center>
-                  <h5><%= performance["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
-                  <h5>at <%= performance["venue"]["name"] %></h5>
+                  <h3><%= link_to performance["venue"]["name"], "/venue?venue=#{performance["venue"]["name"]}&city=#{performance["venue"]["city"]}&region=#{performance["venue"]["region"]}&venueid=#{performance["venue"]["id"]}" %></h3>
                   <h5><%= performance["venue"]["city"] %>, <%= performance["venue"]["region"] %></h5>
+                  <h5><%= performance["datetime"].to_datetime.strftime("%B %-d, %Y, %-l:%M %p") %></h5>
                 </center>
                     <div id= "<%= performance["url"] %>">  </div>
                     <div class="fb-share-button" data-href="<%= performance["url"] %>" data-layout="button"></div>
