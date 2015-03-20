@@ -28,7 +28,7 @@
         <h1><%= image_tag "#{@performances[0]["artists"][0]["thumb_url"]}" %> <%= @performances[0]["artists"][0]["name"] %> </h1>
       </div>
       <div class='container'><iframe id="ytplayer" type="text/html" width="640" height="390"
- src="https://www.youtube.com/embed/YJVmu6yttiw?autoplay=1"
+ src="http://www.youtube.com/embed?listType=search&list=<%= @performances[0]["artists"][0]["name"] %>"
  frameborder="0"/></div>
     </div>
   </div>
