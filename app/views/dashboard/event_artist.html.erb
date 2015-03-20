@@ -2,8 +2,9 @@
 <script src='//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js' type='text/javascript'></script>
 <script>facebookShare();</script>
 
+
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3" style="left: 15px">
     <center>
       <h4><b>Upcoming Performances by <%= "#{@performances[0]["artists"][0]["name"]}" %></b></h4>
     </center>
@@ -40,11 +41,12 @@
   </div>
   <div class="col-md-9">
     <div class="page-header">
-      <h1><%= image_tag "#{@performances[0]["artists"][0]["thumb_url"]}" %> <%= @performances[0]["artists"][0]["name"] %> </h1>
-      <%= link_to "Artist's Official Homepage", "#" %>
+      <h1 ><%= image_tag("#{@performances[0]["artists"][0]["thumb_url"]}", height: '150px') %> <%= @performances[0]["artists"][0]["name"] %> </h1>
     </div>
-    <div class='container'><iframe id="ytplayer" type="text/html" width="640" height="390"
-      src="https://www.youtube.com/embed?listType=search&list=<%= @performances[0]["artists"][0]["name"] %>"
-      frameborder="0"/></div>
+    <div class='container'>
+      <center>
+        <iframe id="ytplayer" type="text/html" width="640" height="390" src="http://www.youtube.com/embed?listType=search&list=<%= @performances[0]["artists"][0]["name"] %>" frameborder="0"/>
+      </center>
     </div>
   </div>
+</div>
