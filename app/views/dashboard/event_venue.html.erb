@@ -43,8 +43,11 @@
   <div class="col-md-9">
     <div class="page-header">
       <div class="row">
-        <div class="col-md-8">
-          <h1><%= image_tag "#{@yelp_info.businesses.first.image_url}" %> <%= @yelp_info.businesses.first.name %> <%= image_tag "#{@yelp_info.businesses.first.rating_img_url_large}" %></h1>
+        <div class="col-md-2" style="width: 155px">
+          <img src="<%= @yelp_info.businesses.first.image_url %>" style="height: 125px">
+        </div>
+        <div class="col-md-6">
+          <h1><b><%= @yelp_info.businesses.first.name %></b></h1> <p><%= image_tag "#{@yelp_info.businesses.first.rating_img_url_large}" %></p>
         </div>
         <div class="col-md-4">
           <h3> <%= link_to "Checkout this Venue on Yelp", "#{@yelp_info.businesses.first.url}" %> </h3>
