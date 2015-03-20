@@ -17,7 +17,6 @@
 </head>
 
 <body>
-
 <script type="text/javascript">
   function initialize() {
     var options = {
@@ -30,7 +29,7 @@
   }
   google.maps.event.addDomListener(window, 'load', initialize);
 </script>
-
+<div class="container-fluid">
   <% unless controller_name =="welcome" %>
   <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
@@ -70,6 +69,6 @@
   <% end %>
 
 <%= yield %>
-
+</div>
 </body>
 </html>
