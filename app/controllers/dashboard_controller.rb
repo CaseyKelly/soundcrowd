@@ -31,7 +31,6 @@ class DashboardController < ApplicationController
       marker.lng event["venue"]["longitude"]
       marker.infowindow event["venue"]["name"]
     end
-
   end
 
   def event_artist
