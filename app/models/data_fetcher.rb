@@ -14,7 +14,7 @@ class DataFetcher
   def fetch_local_shows(location)
     Rails.cache.fetch(location, expires_in: 12.hours) do
       response = @band_connection.get do |req|
-        req.url "/events/search.json?location=#{location}"
+        req.url "/events/search.json?api_version=2.0&location=#{location}"
       end
     end
   end
@@ -26,7 +26,7 @@ class DataFetcher
 
   def venue_shows(venueid)
     response = @band_connection.get do |req|
-      req.url "/venues/#{venueid}/events.json?app_id=SOUNDCROWD"
+      req.url "/venues/#{venueid}/events.json?api_version=2.0&app_id=SOUNDCROWD"
       # req.headers['X-App-Token'] = 'YOUR_KEY'
       # req.headers['Content-Type'] = 'application/json'
     end
@@ -43,7 +43,7 @@ class DataFetcher
 
   def artist_allshows(artistid)
     response = @band_connection.get do |req|
-      req.url "/artists/#{artistid}/events.json?&api_version=2.0&app_id=SOUNDCROWD"
+      req.url "/artists/#{artistid}/events.json?api_version=2.0&app_id=SOUNDCROWD"
       # req.headers['X-App-Token'] = 'YOUR_KEY'
       # req.headers['Content-Type'] = 'application/json'
     end
